@@ -1,3 +1,5 @@
+
+
 let extract n l =
     let rec sub num res func = function
       | [] -> res
@@ -7,3 +9,10 @@ let extract n l =
           sub num (sub (num-1) res new_func xs) func xs
     in let func x res = x::res 
     in sub n [] func l;;
+
+
+let powerset lis =
+    let rec sub res m =
+        if m = 0 then []::res
+        else sub ((extract m lis) @ res) (m - 1)
+    in sub [] (List.length lis);;
